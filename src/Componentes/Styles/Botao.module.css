@@ -1,0 +1,32 @@
+.containerBotao {
+  position: relative;
+  margin: 0 .5rem
+}
+
+.toggle {
+  position: absolute;
+  bottom: -2.5rem;
+  left: calc(50% - 1.2rem);
+  background: #2C3038;
+  box-shadow: 0 0 10px 0 #212328;
+  padding: .5rem 0.8rem;
+  border-radius: 0.2rem;
+  opacity: 0;
+}
+
+.toggle::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: -10px;
+  border: 1px solid red;
+  width: 0;
+  height: 0;
+  border: 5px solid transparent;
+  border-bottom-color: #2C3038
+}
+
+.toggle.visible {
+  opacity: 1;
+
+}

@@ -1,5 +1,8 @@
 import React from 'react'
 import styles from './Styles/Timer.module.css'
+import { ReactComponent as PlaySvg } from '../assets/play-circle.svg'
+import { ReactComponent as PauseSvg } from '../assets/pause-circle.svg'
+import Botao from './Botao'
 
 const Timer = () => {
   return (
@@ -14,7 +17,7 @@ const Timer = () => {
         </time>
         <button aria-label='Adicionar mais 5 minutos'>+5</button>
       </div>
-      <button aria-label='Dar play no cronometro'>Play</button>
+      <Botao Icon={PlaySvg} name='Play' label='Dar play no cronometro' />
     </div>
   )
 }

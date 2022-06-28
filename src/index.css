@@ -39,3 +39,19 @@ main {
   align-items: center;
   padding: 3rem 1rem
 }
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #E08CBF;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #EA7652;
+}
