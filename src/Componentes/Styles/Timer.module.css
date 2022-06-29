@@ -50,8 +50,23 @@
 }
 
 .atividade {
-  border: 1px solid #e9e6df77;
-  padding: 0.1rem 0.7rem;
-  border-radius: .2rem;
   margin: .3rem 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: .2rem;
+  padding: 0 0.5rem;
+}
+
+.addMin {
+  border: 1px solid transparent;
+  border-radius: .2rem;
+  padding: 0 0.5rem;
+  font-size: 1.2rem;
+  color: #e9e6df83;
+}
+
+.addMin:hover {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #E9E6DF;
+  background: rgba(255, 255, 255, 0.05);
 }

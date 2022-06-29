@@ -4,7 +4,16 @@ import { ReactComponent as PlaySvg } from '../assets/play-circle.svg'
 import { ReactComponent as PauseSvg } from '../assets/pause-circle.svg'
 import Botao from './Botao'
 
+import { GlobalConfigsContext } from './GlobalContext/ConfigsContext'
 const Timer = () => {
+
+  const { configs } = React.useContext(GlobalConfigsContext)
+  const [playing, setPlaying] = React.useState(false)
+
+  React.useEffect(() => {
+    console.log(configs.pausas.curtas.min())
+  }, [])
+
   return (
     <div className={styles.timerContainer}>
       <div className={styles.timer}>
@@ -13,11 +22,11 @@ const Timer = () => {
           <p className={styles.atividade}>Atividade</p>
         </div>
         <time className={styles.timeLeft}>
-          25:00
+          {configs.atividade.min()}:00
         </time>
-        <button aria-label='Adicionar mais 5 minutos'>+5</button>
+        <button aria-label='Adicionar mais 5 minutos' className={styles.addMin}>+5</button>
       </div>
-      <Botao Icon={PlaySvg} name='Play' label='Dar play no cronometro' />
+      <Botao Icon={PlaySvg} name='Play' label='Dar play no cronometro' action={setPlaying} />
     </div>
   )
 }

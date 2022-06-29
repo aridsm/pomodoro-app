@@ -1,11 +1,9 @@
 import React from 'react'
-import InputRange from './InputRange'
 import ItemAlarme from './ItemAlarme'
 import styles from './Styles/ModalConfigs.module.css'
+import InputRange from './InputRange'
 
 const ModalConfigs = () => {
-
-  const configs = React.useContext(GlobalConfigsContext)
 
   return (
     <section>

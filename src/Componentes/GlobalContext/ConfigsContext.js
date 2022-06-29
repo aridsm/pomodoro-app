@@ -5,10 +5,22 @@ export const GlobalConfigsContext = React.createContext()
 export const ConfigsContext = ({ children }) => {
 
   const initialConfigs = {
-    atividade: 25,
+    atividade: {
+      value: 50,
+      maxMinValue: 50,
+      min() { return this.maxMinValue * this.value / 100 }
+    },
     pausas: {
-      curtas: 5,
-      longas: 20
+      curtas: {
+        value: 50,
+        maxMinValue: 20,
+        min() { return this.maxMinValue * this.value / 100 }
+      },
+      longas: {
+        value: 50,
+        maxMinValue: 40,
+        min() { return this.maxMinValue * this.value / 100 }
+      },
     },
     velocidade: 50,
     toque: 'toque1'

@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './Styles/Botao.module.css'
 
-const Botao = ({ Icon, name, visible, isVisible }) => {
+const Botao = ({ Icon, name, visible, isVisible, ...args }) => {
 
   const [isToggleVisible, setIsToggleVisible] = React.useState(false)
 
