@@ -1,8 +1,12 @@
 import React from 'react'
 import InputRange from './InputRange'
+import ItemAlarme from './ItemAlarme'
 import styles from './Styles/ModalConfigs.module.css'
 
 const ModalConfigs = () => {
+
+  const configs = React.useContext(GlobalConfigsContext)
+
   return (
     <section>
       <h2>Configurações</h2>
@@ -14,33 +18,15 @@ const ModalConfigs = () => {
         <li>
           <p>Toque do alarme</p>
           <ul class="container-toques">
-            <li>
-              <button class="selected">
-                <p>Tom de alarme</p>
-                <i class="bi bi-soundwave"></i>
-                <audio src="audios/mixkit-alarm-tone-996.wav"></audio>
-              </button>
-            </li>
-            <li>
-              <button>
-                <p>Scanner de dados</p>
-                <i class="bi bi-soundwave"></i>
-                <audio src="audios/mixkit-data-scaner-2847.wav"></audio>
-              </button>
-            </li>
-            <li>
-              <button>
-                <p>Relógio digital</p>
-                <i class="bi bi-soundwave"></i>
-                <audio src="audios/mixkit-digital-clock-digital-alarm-buzzer-992.wav"></audio>
-              </button>
-            </li>
+            <ItemAlarme name='Tom de alarme' />
+            <ItemAlarme name='Scanner de dados' />
+            <ItemAlarme name='Relogio Digital' />
           </ul>
         </li>
 
-        <li><button class="restaurar-cronometro btn-geral">Configurações predefinidas</button></li>
-        <li><button class="cancelar-mudancas btn-geral">Cancelar mudanças</button></li>
-        <li><button class="aceitar-mudancas btn-geral">Confirmar mudanças</button></li>
+        <li><button>Configurações predefinidas</button></li>
+        <li><button>Cancelar mudanças</button></li>
+        <li><button>Confirmar mudanças</button></li>
       </ul>
     </section>
   )

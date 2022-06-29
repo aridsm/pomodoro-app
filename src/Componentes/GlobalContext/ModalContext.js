@@ -5,7 +5,7 @@ export const GlobalModalContext = React.createContext()
 export const ModalContext = ({ children }) => {
 
   const [isRulesOpen, setIsRulesOpen] = React.useState(false)
-  const [isConfigsOpen, setIsConfigsOpen] = React.useState(true)
+  const [isConfigsOpen, setIsConfigsOpen] = React.useState(false)
   const [isSpeedOpen, setIsSpeedOpen] = React.useState(false)
 
   return (
