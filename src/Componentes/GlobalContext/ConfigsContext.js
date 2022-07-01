@@ -5,8 +5,9 @@ export const GlobalConfigsContext = React.createContext()
 export const ConfigsContext = ({ children }) => {
 
   const initialConfigs = {
+    tarefas: ['atividade', 'pausas curtas', 'pausas longas'],
     atividade: {
-      value: 50,
+      value: 10,
       maxMinValue: 50,
       min() { return this.maxMinValue * this.value / 100 }
     },

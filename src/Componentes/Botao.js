@@ -7,7 +7,7 @@ const Botao = ({ Icon, name, visible, isVisible, ...args }) => {
 
   return (
     <div className={styles.containerBotao}>
-      <button onMouseOver={() => setIsToggleVisible(true)} onMouseOut={() => setIsToggleVisible(false)} onClick={() => isVisible(!visible)}><Icon /></button>
+      <button onMouseOver={() => setIsToggleVisible(true)} onMouseOut={() => setIsToggleVisible(false)} onClick={() => isVisible(!visible)} ><Icon /></button>
       <p className={`${styles.toggle} ${isToggleVisible ? styles.visible : ''}`}>{name}</p>
     </div>
   )

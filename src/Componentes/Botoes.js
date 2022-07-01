@@ -9,7 +9,6 @@ import { GlobalModalContext } from './GlobalContext/ModalContext';
 const Botoes = () => {
 
   const modais = React.useContext(GlobalModalContext)
-
   return (
     <nav className={styles.nav}>
       <Botao Icon={InfosIcon} name='Regras' visible={modais.isRulesOpen} setVisible={modais.setIsRulesOpen} />

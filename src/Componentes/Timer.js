@@ -8,11 +8,42 @@ import { GlobalConfigsContext } from './GlobalContext/ConfigsContext'
 const Timer = () => {
 
   const { configs } = React.useContext(GlobalConfigsContext)
-  const [playing, setPlaying] = React.useState(false)
+  const [playing, setPlaying] = React.useState(false);
+  const [currentTask, setCurrentTask] = React.useState(configs.tarefas[0])
+  const [countingTask, setCountingTask] = React.useState({
+    atividade: 0,
+    ['pausas curtas']: 0,
+    ['pausas longas']: 0
+  })
+  let timer = React.useRef()
 
-  React.useEffect(() => {
-    console.log(configs.pausas.curtas.min())
-  }, [])
+  function countTimer() {
+    const INTERVAL = 10;
+    let currentSeconds = 0;
+    let currentMin = configs.atividade.min()
+    timer = setInterval(() => {
+      currentSeconds -= 1;
+      if (currentSeconds < 0) {
+        currentSeconds = 59;
+        currentMin -= 1;
+      }
+      if (currentMin == 0 && currentSeconds == 0) {
+        clearInterval(timer);
+
+        //atualizar a tarefa
+      }
+      console.log(currentMin, currentSeconds)
+    }, INTERVAL);
+
+  }
+
+  function playTimer() {
+    setPlaying(true)
+    countTimer()
+  }
+  function pauseTimer() {
+    setPlaying(false)
+  }
 
   return (
     <div className={styles.timerContainer}>
@@ -26,8 +57,13 @@ const Timer = () => {
         </time>
         <button aria-label='Adicionar mais 5 minutos' className={styles.addMin}>+5</button>
       </div>
-      <Botao Icon={PlaySvg} name='Play' label='Dar play no cronometro' action={setPlaying} />
-    </div>
+      {!playing ?
+        <button label='Iniciar o cronometro' onClick={playTimer}><PlaySvg /></button>
+        :
+        <button label='Pausar no cronometro' onClick={pauseTimer}><PauseSvg /></button>
+      }
+
+    </div >
   )
 }
 
