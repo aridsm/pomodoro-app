@@ -55,6 +55,7 @@
   background: rgba(255, 255, 255, 0.05);
   border-radius: .2rem;
   padding: 0 0.5rem;
+  text-transform: capitalize;
 }
 
 .addMin {

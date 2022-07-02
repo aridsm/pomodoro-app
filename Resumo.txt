@@ -1,0 +1,11 @@
+* Buscar as configs iniciais (React.useContext(GlobalConfigsContext))
+* Declarar um useRef para minutos e para os segundos no momento (useState)
+* Declarar o estado se esta pausado ou play.
+* Declarar a tarefa no momento (useState)
+* Declarar um objeto para a contagem das tarefas (atividade, pausas curtas e pausas longas)
+* Declarar um useRef para guardar o timer
+
+* Criar uma funçao useCallback 
+     * Declarar uma variavel INTERVALO
+     * Se o estado PLAYING for true: 
+     * 

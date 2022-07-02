@@ -2,47 +2,65 @@ import React from 'react'
 import styles from './Styles/Timer.module.css'
 import { ReactComponent as PlaySvg } from '../assets/play-circle.svg'
 import { ReactComponent as PauseSvg } from '../assets/pause-circle.svg'
-import Botao from './Botao'
+// import Botao from './Botao'
 
 import { GlobalConfigsContext } from './GlobalContext/ConfigsContext'
+
 const Timer = () => {
 
-  const { configs } = React.useContext(GlobalConfigsContext)
+  const { configs } = React.useContext(GlobalConfigsContext);
+  const [min, setMin] = React.useState(configs.atividade.min())
+  const [sec, setSec] = React.useState(0)
   const [playing, setPlaying] = React.useState(false);
-  const [currentTask, setCurrentTask] = React.useState(configs.tarefas[0])
+  const [currentTask, setCurrentTask] = React.useState(configs.tarefaInicial)
   const [countingTask, setCountingTask] = React.useState({
     atividade: 0,
-    ['pausas curtas']: 0,
-    ['pausas longas']: 0
+    pausaCurta: 0,
+    pausaLonga: 0
   })
   let timer = React.useRef()
 
-  function countTimer() {
+  React.useEffect(() => {
+    console.log(countingTask)
+
     const INTERVAL = 10;
-    let currentSeconds = 0;
-    let currentMin = configs.atividade.min()
-    timer = setInterval(() => {
-      currentSeconds -= 1;
-      if (currentSeconds < 0) {
-        currentSeconds = 59;
-        currentMin -= 1;
+    const playInterval = () => {
+      setSec(sec - 1)
+      if (sec === 0) {
+        setSec(59)
+        setMin(min - 1)
       }
-      if (currentMin == 0 && currentSeconds == 0) {
+      if (min === 0 && sec === 0) {
         clearInterval(timer);
-
-        //atualizar a tarefa
+        const currentCounting = countingTask[currentTask] + 1
+        setCountingTask({ ...countingTask, [currentTask]: currentCounting })
+        if (currentTask === 'atividade' && countingTask['pausaCurta'] === 4) {
+          setCurrentTask('pausaLonga')
+          setMin(configs.pausas.longas.min())
+        } else if (currentTask === 'pausaCurta' || currentTask === 'pausaLonga') {
+          setCurrentTask('atividade')
+          setMin(configs.atividade.min())
+        } else {
+          setCurrentTask('pausaCurta')
+          setMin(configs.pausas.curtas.min())
+        }
       }
-      console.log(currentMin, currentSeconds)
-    }, INTERVAL);
-
-  }
+    }
+    if (playing) {
+      timer.current = setInterval(() => playInterval(), INTERVAL);
+    }
+    return () => {
+      clearInterval(timer.current);
+    };
+  }, [configs.atividade, configs.pausas.curtas, configs.pausas.longas, countingTask, currentTask, min, playing, sec])
 
   function playTimer() {
     setPlaying(true)
-    countTimer()
+
   }
   function pauseTimer() {
     setPlaying(false)
+
   }
 
   return (
@@ -50,10 +68,10 @@ const Timer = () => {
       <div className={styles.timer}>
         <div>
           <p className={styles.horaDe}>é hora de</p>
-          <p className={styles.atividade}>Atividade</p>
+          <p className={styles.atividade}>{currentTask}</p>
         </div>
         <time className={styles.timeLeft}>
-          {configs.atividade.min()}:00
+          {min}:{sec}
         </time>
         <button aria-label='Adicionar mais 5 minutos' className={styles.addMin}>+5</button>
       </div>
