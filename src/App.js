@@ -1,26 +1,10 @@
-import styled from 'styled-components'
-import Botoes from './Componentes/Botoes';
-import Timer from './Componentes/Timer';
-import Titulo from './Componentes/Titulo';
-import Footer from './Componentes/Footer';
-import { ModalContext } from './Componentes/GlobalContext/ModalContext';
-import { ConfigsContext } from './Componentes/GlobalContext/ConfigsContext';
-import Modais from './Componentes/Modais';
+import React from 'react'
+import Timer from './Timer';
 
 function App() {
   return (
     <main>
-      <ModalContext>
-        <ConfigsContext>
-          <div>
-            <Botoes />
-            <Titulo />
-            <Timer />
-            <Footer />
-          </div>
-          <Modais />
-        </ConfigsContext>
-      </ModalContext>
+      <Timer />
     </main>
   )
 }
