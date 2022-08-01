@@ -4,9 +4,9 @@ export const ConfigsContext = React.createContext();
 
 const initialState = {
   minutos: {
-    atividade: 1,
-    pausaCurta: 1,
-    pausaLonga: 1
+    atividade: 25,
+    pausaCurta: 5,
+    pausaLonga: 20
   },
   tarefaAtual: 'atividade',
   contagem: {
@@ -15,7 +15,7 @@ const initialState = {
     pausaLonga: 0
   },
   volume: 50,
-  minAtual: 1
+  minAtual: 25
 }
 
 const configReducer = (state, action) => {

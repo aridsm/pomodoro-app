@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;400&display=swap');
 
 * {
   box-sizing: border-box;
@@ -8,11 +8,10 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 300;
-  background: radial-gradient(50% 60% at 50% 50%, #2C3038 0%, #212328 100%);
-  height: 100vh;
-  color: #E9E6DF
+  font-size: 1.2rem;
+  font-weight: 100;
+  background: radial-gradient(100% 100% at 50% 0%, #2e2d35 0%, #000000 100%);
+  color: white
 }
 
 button {
@@ -31,27 +30,4 @@ a {
   font-weight: inherit;
   color: inherit;
   text-decoration: none;
-}
-
-main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 3rem 1rem
-}
-
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #E08CBF;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #EA7652;
 }

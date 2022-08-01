@@ -1,0 +1,40 @@
+.main {
+  background: url('./assets/bg.svg');
+  overflow: hidden;
+  position: relative;
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  padding: 1rem;
+  margin: 0 auto;
+  background-repeat: repeat;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-height: 100vh;
+  height: 100%;
+}
+
+.main>svg {
+  position: absolute;
+}
+
+.circ1 {
+  top: -120px;
+  left: 7%;
+  transform: scale(1.1);
+}
+
+.circ2 {
+  bottom: -180px;
+  left: 20%;
+  transform: scale(.7);
+}
+
+.circ3 {
+  bottom: 20%;
+  right: 5%;
+  transform: scale(.7);
+}
