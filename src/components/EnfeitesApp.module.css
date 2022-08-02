@@ -1,0 +1,52 @@
+.circ1 {
+  top: -120px;
+  left: 7%;
+  transform: scale(1.1);
+}
+
+.circ1,
+.circ2,
+.circ3 {
+  -webkit-filter: drop-shadow(0px 0px 40px rgba(255, 249, 108, 0.3));
+  filter: drop-shadow(0px 0px 40px rgba(255, 249, 108, 0.3))
+}
+
+.circ2 {
+  bottom: -180px;
+  left: 20%;
+  transform: scale(.7);
+}
+
+.circ3 {
+  bottom: 20%;
+  right: 5%;
+  transform: scale(.7);
+}
+
+.bril1 {
+  transform: scale(.3);
+  top: 35%;
+  left: 10%;
+  opacity: .5;
+}
+
+.bril2 {
+  transform: scale(.6);
+  top: 20%;
+  right: 22%;
+}
+
+.bril3 {
+  transform: scale(.4);
+  bottom: 10%;
+  right: 45%;
+  opacity: .5;
+}
+
+.bril1,
+.bril2,
+.bril3 {
+
+  -webkit-filter: drop-shadow(0px 0px 20px rgba(255, 255, 255, 0.3));
+  filter: drop-shadow(0px 0px 20px rgba(255, 255, 255, 0.3))
+}

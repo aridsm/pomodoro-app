@@ -20,21 +20,3 @@
 .main>svg {
   position: absolute;
 }
-
-.circ1 {
-  top: -120px;
-  left: 7%;
-  transform: scale(1.1);
-}
-
-.circ2 {
-  bottom: -180px;
-  left: 20%;
-  transform: scale(.7);
-}
-
-.circ3 {
-  bottom: 20%;
-  right: 5%;
-  transform: scale(.7);
-}

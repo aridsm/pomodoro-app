@@ -1,0 +1,13 @@
+.ativ {
+  margin-left: auto;
+  text-align: right;
+}
+
+.title {
+  font-size: 1rem;
+  opacity: .6;
+}
+
+.tarefa {
+  text-transform: capitalize;
+}
