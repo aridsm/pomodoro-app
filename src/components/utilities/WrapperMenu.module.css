@@ -1,0 +1,22 @@
+.containerMenu {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.9);
+  min-height: 100vh;
+  height: 100%;
+  top: 0;
+  right: 0;
+  padding: 3rem 3.5rem 3rem 3rem;
+  max-width: 24rem;
+  width: 100%;
+  z-index: 2;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  text-align: right;
+  overflow: auto;
+}
+
+.title {
+  font-size: 1rem;
+  opacity: .6;
+  margin-bottom: 3rem;
+}

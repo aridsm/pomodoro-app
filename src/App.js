@@ -2,7 +2,7 @@ import React from 'react'
 import Footer from './components/Footer';
 import Timer from './components/Timer';
 import classes from './App.module.css'
-import Menu from './components/Menu';
+import Menu from './components/menu/Menu';
 import Atividade from './components/Atividade';
 import EnfeitesApp from './components/EnfeitesApp';
 

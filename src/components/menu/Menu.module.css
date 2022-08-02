@@ -1,0 +1,19 @@
+.menu {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: .5rem 1rem;
+  border-radius: 2rem;
+  transition: .1s;
+  border: 1px solid #ffffff23;
+}
+
+.menu:hover {
+  background: #ffffff0c;
+}
+
+.menu>svg {
+  transform: scale(1.5);
+  margin-left: 1rem;
+}

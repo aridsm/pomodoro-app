@@ -1,13 +1,14 @@
 .footer {
   justify-self: flex-end;
-  padding-bottom: 3rem;
 }
 
 .footer a {
   display: flex;
   align-items: center;
+  display: inline-block;
 }
 
 .footer svg {
   transform: scale(1.2);
+  margin-left: .5rem;
 }
