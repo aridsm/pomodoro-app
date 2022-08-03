@@ -4,43 +4,48 @@ import { ReactComponent as IconMenu } from '../../assets/menu.svg'
 import useVisibility from '../../hooks/useVisibility'
 import WrapperMenu from '../utilities/WrapperMenu'
 import MenuInstrucoes from './MenuInstrucoes'
+import MenuNav from './MenuNav'
+import MenuConfigs from './MenuConfigs'
+import MenuContagem from './MenuContagem'
 
 const Menu = () => {
 
   const { isShown, setIsShown, menuRef } = useVisibility();
   const [isNavMenuShown, setIsNavMenuShown] = useState(true);
-  const [isInstrucoesMenuShown, setIsInstrucoesMenuShown] = useState(false);
+  const [isInstrucoesShown, setIsInstrucoesShown] = useState(false);
+  const [isConfigsShown, setIsConfigsShown] = useState(false);
+  const [isContagemShown, setIsContagemShown] = useState(false);
 
   useEffect(() => {
-    if (isInstrucoesMenuShown) {
+    if (isInstrucoesShown || isConfigsShown || isContagemShown) {
       setIsNavMenuShown(false)
     } else {
       setIsNavMenuShown(true)
     }
-  }, [isInstrucoesMenuShown])
+  }, [isInstrucoesShown, isConfigsShown, isContagemShown])
 
   const intrucoesHandler = () => {
-    setIsInstrucoesMenuShown(true);
+    setIsInstrucoesShown(true);
+  }
+  const configsHandler = () => {
+    setIsConfigsShown(true);
+  }
+  const contagemHandler = () => {
+    setIsContagemShown(true);
   }
 
   return (
     <>
       <section ref={menuRef}>
-        <button className={classes.menu} onClick={() => setIsShown(true)}><span>Menu</span> <IconMenu /></button>
+        <button className={classes.menu} onClick={() => setIsShown(true)} type="button"><span>Menu</span> <IconMenu /></button>
         {isShown &&
           <>
-            {isNavMenuShown &&
-              <WrapperMenu title="Menu">
-                <nav className={classes.nav}>
-                  <button onClick={intrucoesHandler}>Instruçoes</button>
-                  <button>Configuraçoes</button>
-                  <button>Contagem</button>
-                </nav>
-              </WrapperMenu>
-            }
-            {isInstrucoesMenuShown &&
-              <MenuInstrucoes />
-            }
+            <section className={classes.container}>
+              <MenuNav intrucoesHandler={intrucoesHandler} configsHandler={configsHandler} contagemHandler={contagemHandler} className={`${classes.menuContainer} ${isNavMenuShown ? classes.ativo : ''}`} />
+              <MenuInstrucoes className={`${classes.menuContainer} ${isInstrucoesShown ? classes.ativo : ''}`} setShown={setIsInstrucoesShown} />
+              <MenuConfigs className={`${classes.menuContainer} ${isConfigsShown ? classes.ativo : ''}`} setShown={setIsConfigsShown} />
+              <MenuContagem className={`${classes.menuContainer} ${isContagemShown ? classes.ativo : ''}`} setShown={setIsContagemShown} />
+            </section>
           </>
         }
       </section>

@@ -1,6 +1,6 @@
 .circ1 {
-  top: -120px;
-  left: 7%;
+  top: -110px;
+  left: 7vw;
   transform: scale(1.1);
 }
 
@@ -13,13 +13,13 @@
 
 .circ2 {
   bottom: -180px;
-  left: 20%;
-  transform: scale(.7);
+  left: 23vw;
+  transform: scale(.8);
 }
 
 .circ3 {
   bottom: 20%;
-  right: 5%;
+  right: 7vw;
   transform: scale(.7);
 }
 

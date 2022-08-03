@@ -17,3 +17,41 @@
   transform: scale(1.5);
   margin-left: 1rem;
 }
+
+.container {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.9);
+  min-height: 100vh;
+  height: 100%;
+  top: 0;
+  right: 0;
+  padding: 3rem 3.5rem 3rem 3rem;
+  max-width: 27rem;
+  width: 100%;
+  z-index: 2;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  text-align: right;
+  overflow: auto;
+}
+
+.menuContainer {
+  display: none;
+  animation: .5s animaMenu forwards;
+}
+
+.menuContainer.ativo {
+  display: block;
+}
+
+@keyframes animaMenu {
+  from {
+    opacity: .8;
+    transform: translate3d(4rem, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}

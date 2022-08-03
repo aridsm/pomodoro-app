@@ -1,12 +1,10 @@
 import React from 'react'
-import WrapperMenu from '../utilities/WrapperMenu'
 import classes from './MenuInstrucoes.module.css'
-import { ReactComponent as IconArrowBack } from '../../assets/arrow-back.svg'
+import WrapperMenu from '../utilities/WrapperMenu'
 
-const MenuInstrucoes = () => {
+const MenuInstrucoes = ({ className, setShown }) => {
   return (
-    <WrapperMenu title="Instruçoes">
-      <button className={classes.btnVoltar} title='Voltar'><IconArrowBack /></button>
+    <WrapperMenu title='Instruçoes' setShown={setShown} className={className}>
       <ol className={classes.lista}>
         <li>Ao clicar no botão de <strong>play</strong>, o cronômetro iniciará a contagem.</li>
         <li>A cada <strong>25 minutos</strong> um alarme será acionado, avisando que está na hora de uma <strong> pequena pausa</strong>.</li>

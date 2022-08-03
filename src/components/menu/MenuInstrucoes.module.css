@@ -27,18 +27,3 @@
   background: linear-gradient(135deg, #78FF6C 0%, #FAC641 100%);
   transform: rotate(45deg);
 }
-
-.btnVoltar {
-  position: absolute;
-  left: 1.5rem;
-  top: 3rem;
-  width: 2rem;
-  height: 2rem;
-  display: grid;
-  place-items: center;
-}
-
-.btnVoltar svg {
-  transform: scale(.5);
-  fill: #ffffff23;
-}

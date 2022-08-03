@@ -1,0 +1,25 @@
+.nav button {
+  display: block;
+  margin-left: auto;
+  position: relative;
+}
+
+.nav button+button {
+  margin-top: 1.2rem;
+}
+
+.nav button::after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: -.5rem;
+  right: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(135deg, #78FF6C 0%, #FAC641 100%);
+  transition: .2s;
+}
+
+.nav button:hover::after {
+  width: 50%;
+}
