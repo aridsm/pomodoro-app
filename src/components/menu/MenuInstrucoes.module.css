@@ -15,15 +15,3 @@
 .lista li {
   position: relative;
 }
-
-.lista li::after {
-  content: '';
-  display: block;
-  position: absolute;
-  right: -1.8rem;
-  top: calc(50% - 4px);
-  width: 8px;
-  height: 8px;
-  background: linear-gradient(135deg, #78FF6C 0%, #FAC641 100%);
-  transform: rotate(45deg);
-}

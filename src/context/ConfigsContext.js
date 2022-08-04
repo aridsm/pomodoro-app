@@ -3,10 +3,10 @@ import React, { useReducer } from 'react'
 export const ConfigsContext = React.createContext();
 
 const initialState = {
-  minutos: {
-    atividade: 1,
-    pausaCurta: 1,
-    pausaLonga: 1
+  segundos: {
+    atividade: 160,
+    pausaCurta: 60,
+    pausaLonga: 70
   },
   tarefaAtual: 'atividade',
   contagem: {
@@ -14,8 +14,7 @@ const initialState = {
     pausaCurta: 0,
     pausaLonga: 0
   },
-  volume: 50,
-  minAtual: 1
+  volume: 50
 }
 
 const configReducer = (state, action) => {
@@ -35,11 +34,14 @@ const configReducer = (state, action) => {
       novaTarefa = 'atividade'
     }
 
-    let novoMin = state.minutos[novaTarefa]
-    return { ...state, tarefaAtual: novaTarefa, contagem: novaContagem, minAtual: novoMin }
+    return { ...state, tarefaAtual: novaTarefa, contagem: novaContagem }
   }
-  if (action.type === 'MIN') {
-    return { ...state, minAtual: action.min }
+  if (action.type === 'UPDATE_CONFIGS') {
+    return { ...state, segundos: action.configs }
+  }
+  if (action.type === 'SET_INITIAL_VALUE') {
+
+    return { ...state, segundos: initialState.segundos, tarefaAtual: initialState.tarefaAtual }
   }
 }
 
@@ -50,11 +52,14 @@ const ConfigsContextProvider = ({ children }) => {
   const changeActivity = () => {
     dispatchConfigs({ type: 'ACTIVITY' })
   }
-  const setMin = (min) => {
-    dispatchConfigs({ type: 'MIN', min })
+  const updateConfigs = (configs) => {
+    dispatchConfigs({ type: 'UPDATE_CONFIGS', configs })
+  }
+  const setInitialValue = () => {
+    dispatchConfigs({ type: 'SET_INITIAL_VALUE' })
   }
   return (
-    <ConfigsContext.Provider value={{ configs, changeActivity, setMin }}>
+    <ConfigsContext.Provider value={{ configs, changeActivity, updateConfigs, setInitialValue }}>
       {children}
     </ConfigsContext.Provider>
   )

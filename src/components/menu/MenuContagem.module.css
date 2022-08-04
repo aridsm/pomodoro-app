@@ -1,0 +1,19 @@
+.lista {
+  list-style: none;
+}
+
+.lista li+li {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #ffffff23;
+}
+
+.lista li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lista span {
+  font-size: 2rem;
+}

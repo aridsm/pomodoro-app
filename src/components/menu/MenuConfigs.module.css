@@ -1,14 +1,26 @@
-.btnVoltar {
-  position: absolute;
-  left: 1.5rem;
-  top: 3rem;
-  width: 2rem;
-  height: 2rem;
-  display: grid;
-  place-items: center;
+.listaInputs {
+  list-style: none;
 }
 
-.btnVoltar svg {
-  transform: scale(.5);
-  fill: #ffffff23;
+
+.btnDefault,
+.btnSalvar {
+  border-radius: 2rem;
+  display: grid;
+  place-items: center;
+  padding: .7rem 1rem;
+  margin-left: auto;
+  border: 1px solid #ffffff23;
+  transition: .1s;
+}
+
+.btnDefault:hover,
+.btnSalvar:hover {
+
+  background: #ffffff0c;
+}
+
+.btnSalvar {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
 }

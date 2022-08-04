@@ -41,7 +41,7 @@ const Menu = () => {
         {isShown &&
           <>
             <section className={classes.container}>
-              <MenuNav intrucoesHandler={intrucoesHandler} configsHandler={configsHandler} contagemHandler={contagemHandler} className={`${classes.menuContainer} ${isNavMenuShown ? classes.ativo : ''}`} />
+              <MenuNav intrucoesHandler={intrucoesHandler} configsHandler={configsHandler} contagemHandler={contagemHandler} className={`${classes.menuContainer} ${isNavMenuShown ? classes.ativo : ''}`} setShown={setIsShown} />
               <MenuInstrucoes className={`${classes.menuContainer} ${isInstrucoesShown ? classes.ativo : ''}`} setShown={setIsInstrucoesShown} />
               <MenuConfigs className={`${classes.menuContainer} ${isConfigsShown ? classes.ativo : ''}`} setShown={setIsConfigsShown} />
               <MenuContagem className={`${classes.menuContainer} ${isContagemShown ? classes.ativo : ''}`} setShown={setIsContagemShown} />
