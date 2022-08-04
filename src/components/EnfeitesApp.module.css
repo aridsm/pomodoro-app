@@ -65,3 +65,37 @@
   }
 
 }
+
+@media all and (max-width: 580px) {
+  .circ1 {
+    top: -160px;
+    left: -6rem;
+    transform: scale(.6);
+  }
+
+  .circ2 {
+    bottom: -170px;
+    left: 35vw;
+    transform: scale(.4);
+  }
+
+  .circ3 {
+    transform: scale(.3);
+    right: -9rem;
+  }
+
+  .bril2 {
+    transform: scale(.4);
+    right: 10%;
+  }
+
+  .bril3 {
+    bottom: 15%;
+    right: 55%;
+  }
+
+  .bril1 {
+    top: 28%;
+    left: 10%;
+  }
+}

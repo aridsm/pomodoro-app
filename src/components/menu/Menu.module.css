@@ -55,3 +55,13 @@
     transform: translate3d(0, 0, 0);
   }
 }
+
+
+@media all and (max-width: 580px) {
+  .container {
+    max-width: 100vw;
+    width: 100%;
+    padding: 3rem 1.8rem
+  }
+
+}

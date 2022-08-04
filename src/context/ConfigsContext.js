@@ -4,9 +4,9 @@ export const ConfigsContext = React.createContext();
 
 const initialState = {
   segundos: {
-    atividade: 160,
-    pausaCurta: 60,
-    pausaLonga: 70
+    atividade: 60 * 25,
+    pausaCurta: 60 * 5,
+    pausaLonga: 60 * 20
   },
   tarefaAtual: 'atividade',
   contagem: {

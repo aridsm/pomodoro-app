@@ -12,3 +12,9 @@
   transform: scale(1.2);
   margin-left: .5rem;
 }
+
+@media all and (max-width: 580px) {
+  .footer {
+    text-align: center;
+  }
+}

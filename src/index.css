@@ -9,6 +9,7 @@
 body {
   font-family: 'Poppins', sans-serif;
   font-size: 1.2rem;
+  letter-spacing: .5px;
   font-weight: 100;
   background: radial-gradient(100% 100% at 50% 0%, #2f3038 0%, #000000 100%);
   color: white
@@ -48,4 +49,10 @@ a {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #78FF6C;
+}
+
+@media all and (max-width: 580px) {
+  body {
+    font-size: 1rem;
+  }
 }

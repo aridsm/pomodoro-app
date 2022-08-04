@@ -7,30 +7,23 @@ import MenuConfigsInput from './MenuConfigsInput'
 const MenuConfigs = ({ className, setShown }) => {
 
   const { configs, updateConfigs, setInitialValue } = useContext(ConfigsContext);
+  const { segundos } = configs
+  const [segundosConfigs, setSegundosConfigs] = useState(segundos)
 
-  const [segundosConfigs, setSegundosConfigs] = useState({})
-  //usEffect para mudar as configs antes de fechar?
-
-  useEffect(() => {
-    setSegundosConfigs(configs.segundos)
-  }, [configs])
-
-
-  const changeAtividadeValue = ({ target }) => {
-    setSegundosConfigs({ ...segundosConfigs, atividade: target.value })
+  const changeAtividadeValue = (totalSegundos) => {
+    setSegundosConfigs({ ...segundosConfigs, atividade: totalSegundos })
   }
 
-  const changePausaCurtadeValue = ({ target }) => {
-    setSegundosConfigs({ ...segundosConfigs, pausaCurta: target.value })
+  const changePausaCurtadeValue = (totalSegundos) => {
+    setSegundosConfigs({ ...segundosConfigs, pausaCurta: totalSegundos })
   }
 
-  const changePausaLongaValue = ({ target }) => {
-    setSegundosConfigs({ ...segundosConfigs, pausaLonga: target.value })
+  const changePausaLongaValue = (totalSegundos) => {
+    setSegundosConfigs({ ...segundosConfigs, pausaCurta: totalSegundos })
   }
 
   const salvarNovasConfigs = () => {
-    console.log(segundosConfigs)
-    // updateConfigs(segundosConfigs)
+    updateConfigs(segundosConfigs)
   }
 
   const voltarConfigsIniciais = () => {
@@ -41,9 +34,9 @@ const MenuConfigs = ({ className, setShown }) => {
     <WrapperMenu title='Configuraçoes' setShown={setShown} className={className}>
       <form onSubmit={(e) => e.preventDefault()}>
         <ul className={classes.listaInputs}>
-          <MenuConfigsInput value={segundosConfigs.atividade} onChange={changeAtividadeValue} id='atividade' legend='Intervalo de atividade' />
-          <MenuConfigsInput value={segundosConfigs.pausaCurta} onChange={changePausaCurtadeValue} id='pausas-curtas' legend='Intervalo de pausas curtas' />
-          <MenuConfigsInput value={segundosConfigs.pausaLonga} onChange={changePausaLongaValue} id='pausas-longas' legend='Intervalo de pausas longas' />
+          <MenuConfigsInput value={segundosConfigs.atividade} updateValue={changeAtividadeValue} id='atividade' legend='Intervalo de atividade' />
+          <MenuConfigsInput value={segundosConfigs.pausaCurta} updateValue={changePausaCurtadeValue} id='pausas-curtas' legend='Intervalo de pausas curtas' />
+          <MenuConfigsInput value={segundosConfigs.pausaLonga} updateValue={changePausaLongaValue} id='pausas-longas' legend='Intervalo de pausas longas' />
         </ul>
         <button className={classes.btnSalvar} onClick={salvarNovasConfigs}>Salvar alteraçoes</button>
         <button className={classes.btnDefault} onClick={voltarConfigsIniciais}>Configuraçoes predefinidas</button>

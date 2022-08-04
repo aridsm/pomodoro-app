@@ -11,3 +11,10 @@
 .tarefa {
   text-transform: capitalize;
 }
+
+@media all and (max-width: 580px) {
+  .ativ {
+    margin-right: auto;
+    text-align: center;
+  }
+}
