@@ -30,6 +30,23 @@
   background: #ffffff0c;
 }
 
+.btnPlay:disabled {
+  background: #ffffff0c;
+  color: #ffffff93;
+  cursor: not-allowed;
+}
+
+.btnPlay:disabled span {
+  box-shadow: none;
+  background: rgb(57, 59, 61);
+}
+
+.btnPlay:disabled svg {
+  box-shadow: none;
+  fill: #27282e;
+
+}
+
 .btnPlay svg {
   fill: #060811;
   transform: scale(2);
@@ -43,7 +60,7 @@
   height: 3.5rem;
   position: absolute;
   right: -.5rem;
-  top: -.2rem;
+  top: -.3rem;
   background: linear-gradient(180deg, #78FF6C 0%, #FAC641 100%);
   box-shadow: 0px 0px 30px rgba(255, 249, 108, 0.2);
 }

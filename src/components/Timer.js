@@ -9,8 +9,15 @@ const Timer = () => {
   const [playing, setPlaying] = useState(false);
   const [segundos, setSegundos] = useState(0)
   const cron = useRef();
+  const timeout = useRef();
   const audio = useRef();
   const { volume } = configs
+
+
+
+  /*erro no volume apenas atualiza quando o timer esta pausado*/
+
+
 
   useEffect(() => {
     setSegundos(configs.segundos[configs.tarefaAtual])
@@ -28,12 +35,13 @@ const Timer = () => {
           audio.current.play();
           audio.current.loop = true;
           audio.current.volume = volume / 100;
-          const timeout = setTimeout(() => {
+          timeout.current = setTimeout(() => {
             changeActivity();
             setPlaying(true);
-            audio.current.pause()
+            audio.current.pause();
+            audio.current.currentTime = 0;
           }, 3000);
-          return () => clearTimeout(timeout)
+          return () => clearTimeout(timeout.current)
         }
       }, 50)
     }
@@ -56,9 +64,8 @@ const Timer = () => {
       <h1 className={classes.h1}>Pomodoro App</h1>
       <div className={classes.timer}>
         {min}:{sec}
-        {/*padNumber(configs.minAtual)}:{padNumber(segundos)*/}
       </div>
-      <button className={classes.btnPlay} onClick={() => setPlaying(prevState => !prevState)}>{btnContent}</button>
+      <button className={classes.btnPlay} onClick={() => setPlaying(prevState => !prevState)} disabled={!playing && segundos === 0}>{btnContent}</button>
       <audio src={require(`../assets/${configs.audio}`)} ref={audio}></audio>
     </section>
   )

@@ -1,0 +1,26 @@
+.toque input {
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  visibility: hidden;
+}
+
+.toque label {
+  cursor: pointer;
+  display: inline-block;
+  padding: .3rem .6rem;
+  border-radius: .2rem;
+  transition: .1s;
+  border: 1px solid transparent;
+}
+
+.toque label:hover,
+.toque input:checked~label {
+  background: #ffffff0c;
+  color: #ffffffa8;
+  border-color: #ffffff23;
+}
+
+.toque+.toque {
+  margin-top: .5rem;
+}

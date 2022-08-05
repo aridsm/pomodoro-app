@@ -15,7 +15,7 @@ const initialState = {
     pausaLonga: 0
   },
   volume: 50,
-  audio: 'audio-alarm.wav'
+  audio: 'toque-1.wav'
 }
 
 const configReducer = (state, action) => {
@@ -37,10 +37,9 @@ const configReducer = (state, action) => {
     return { ...state, tarefaAtual: novaTarefa, contagem: novaContagem }
   }
   if (action.type === 'UPDATE_CONFIGS') {
-    return { ...state, segundos: action.segundosObj, volume: action.volume }
+    return { ...state, segundos: action.segundosObj, volume: action.volume, audio: action.toque }
   }
   if (action.type === 'SET_INITIAL_VALUE') {
-
     return { ...state, segundos: initialState.segundos, volume: initialState.volume }
   }
 }
@@ -52,14 +51,15 @@ const ConfigsContextProvider = ({ children }) => {
   const changeActivity = () => {
     dispatchConfigs({ type: 'ACTIVITY' })
   }
-  const updateConfigs = (segundosObj, volume) => {
-    dispatchConfigs({ type: 'UPDATE_CONFIGS', segundosObj, volume })
+  const updateConfigs = (segundosObj, volume, toque) => {
+    dispatchConfigs({ type: 'UPDATE_CONFIGS', segundosObj, volume, toque })
   }
   const setInitialValue = () => {
     dispatchConfigs({ type: 'SET_INITIAL_VALUE' })
   }
+
   return (
-    <ConfigsContext.Provider value={{ configs, changeActivity, updateConfigs, setInitialValue }}>
+    <ConfigsContext.Provider value={{ configs, changeActivity, updateConfigs, setInitialValue, }}>
       {children}
     </ConfigsContext.Provider>
   )
