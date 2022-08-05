@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import classes from './MenuConfigs.module.css'
 import WrapperMenu from '../utilities/WrapperMenu'
 import { ConfigsContext } from '../../context/ConfigsContext'
@@ -7,6 +7,7 @@ import MenuConfigsInput from './MenuConfigsInput'
 const MenuConfigs = ({ className, setShown }) => {
 
   const { configs, updateConfigs, setInitialValue } = useContext(ConfigsContext);
+  const [volume, setVolume] = useState(configs.volume)
   const { segundos } = configs
   const [segundosConfigs, setSegundosConfigs] = useState(segundos)
 
@@ -23,7 +24,7 @@ const MenuConfigs = ({ className, setShown }) => {
   }
 
   const salvarNovasConfigs = () => {
-    updateConfigs(segundosConfigs)
+    updateConfigs(segundosConfigs, volume)
   }
 
   const voltarConfigsIniciais = () => {
@@ -37,6 +38,11 @@ const MenuConfigs = ({ className, setShown }) => {
           <MenuConfigsInput value={segundosConfigs.atividade} updateValue={changeAtividadeValue} id='atividade' legend='Intervalo de atividade' />
           <MenuConfigsInput value={segundosConfigs.pausaCurta} updateValue={changePausaCurtadeValue} id='pausas-curtas' legend='Intervalo de pausas curtas' />
           <MenuConfigsInput value={segundosConfigs.pausaLonga} updateValue={changePausaLongaValue} id='pausas-longas' legend='Intervalo de pausas longas' />
+          <li className={classes.volumeField}>
+            <label>Volume do alarme</label>
+            <input type="range" value={volume} id='volume' onChange={({ target }) => setVolume(target.value)} />
+            <p className={classes.volumeValue}>{volume}%</p>
+          </li>
         </ul>
         <button className={classes.btnSalvar} onClick={salvarNovasConfigs}>Salvar alteraçoes</button>
         <button className={classes.btnDefault} onClick={voltarConfigsIniciais}>Configuraçoes predefinidas</button>

@@ -4,9 +4,9 @@ export const ConfigsContext = React.createContext();
 
 const initialState = {
   segundos: {
-    atividade: 60 * 25,
-    pausaCurta: 60 * 5,
-    pausaLonga: 60 * 20
+    atividade: 60 * 1,
+    pausaCurta: 60 * 1,
+    pausaLonga: 60 * 1
   },
   tarefaAtual: 'atividade',
   contagem: {
@@ -14,7 +14,8 @@ const initialState = {
     pausaCurta: 0,
     pausaLonga: 0
   },
-  volume: 50
+  volume: 50,
+  audio: 'audio-alarm.wav'
 }
 
 const configReducer = (state, action) => {
@@ -33,15 +34,14 @@ const configReducer = (state, action) => {
     } else if (tarefaAtual === 'pausaLonga') {
       novaTarefa = 'atividade'
     }
-
     return { ...state, tarefaAtual: novaTarefa, contagem: novaContagem }
   }
   if (action.type === 'UPDATE_CONFIGS') {
-    return { ...state, segundos: action.configs }
+    return { ...state, segundos: action.segundosObj, volume: action.volume }
   }
   if (action.type === 'SET_INITIAL_VALUE') {
 
-    return { ...state, segundos: initialState.segundos, tarefaAtual: initialState.tarefaAtual }
+    return { ...state, segundos: initialState.segundos, volume: initialState.volume }
   }
 }
 
@@ -52,8 +52,8 @@ const ConfigsContextProvider = ({ children }) => {
   const changeActivity = () => {
     dispatchConfigs({ type: 'ACTIVITY' })
   }
-  const updateConfigs = (configs) => {
-    dispatchConfigs({ type: 'UPDATE_CONFIGS', configs })
+  const updateConfigs = (segundosObj, volume) => {
+    dispatchConfigs({ type: 'UPDATE_CONFIGS', segundosObj, volume })
   }
   const setInitialValue = () => {
     dispatchConfigs({ type: 'SET_INITIAL_VALUE' })

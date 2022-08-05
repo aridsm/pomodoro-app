@@ -9,6 +9,8 @@ const Timer = () => {
   const [playing, setPlaying] = useState(false);
   const [segundos, setSegundos] = useState(0)
   const cron = useRef();
+  const audio = useRef();
+  const { volume } = configs
 
   useEffect(() => {
     setSegundos(configs.segundos[configs.tarefaAtual])
@@ -20,19 +22,26 @@ const Timer = () => {
       let s = segundos;
       cron.current = setInterval(() => {
         --s;
-        if (s === 0) {
-          clearInterval(cron.current);
-          changeActivity();
-          return;
-        }
         setSegundos(s)
+        if (s === 0) {
+          setPlaying(false);
+          audio.current.play();
+          audio.current.loop = true;
+          audio.current.volume = volume / 100;
+          const timeout = setTimeout(() => {
+            changeActivity();
+            setPlaying(true);
+            audio.current.pause()
+          }, 3000);
+          return () => clearTimeout(timeout)
+        }
       }, 50)
     }
 
     return () => {
-      clearTimeout(cron.current)
+      clearInterval(cron.current)
     }
-  }, [changeActivity, playing, segundos])
+  }, [changeActivity, playing, segundos, volume])
 
   const btnContent = playing ? <p>Pausar <span><IconPause /></span></p> : <p>Iniciar <span><IconPlay /></span></p>;
 
@@ -50,6 +59,7 @@ const Timer = () => {
         {/*padNumber(configs.minAtual)}:{padNumber(segundos)*/}
       </div>
       <button className={classes.btnPlay} onClick={() => setPlaying(prevState => !prevState)}>{btnContent}</button>
+      <audio src={require(`../assets/${configs.audio}`)} ref={audio}></audio>
     </section>
   )
 }
