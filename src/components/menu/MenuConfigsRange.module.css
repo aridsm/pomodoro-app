@@ -1,0 +1,26 @@
+.rangeField label {
+  font-size: 1rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.rangeField input {
+  width: 100%;
+  -webkit-appearance: none !important;
+  background: #ffffff23;
+  border-radius: 10px;
+  height: 8px;
+}
+
+.rangeField input::-webkit-slider-thumb {
+  -webkit-appearance: none !important;
+  background: white;
+  border-radius: 50%;
+  height: 1.2rem;
+  width: 1.2rem;
+}
+
+.value {
+  font-size: 1.8rem;
+}

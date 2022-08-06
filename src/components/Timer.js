@@ -4,6 +4,10 @@ import classes from './Timer.module.css';
 import { ReactComponent as IconPlay } from '../assets/play-fill.svg'
 import { ReactComponent as IconPause } from '../assets/pause-fill.svg'
 
+const padNumber = (num) => {
+  return num.toString().padStart(2, 0)
+}
+
 const Timer = () => {
   const { configs, changeActivity } = useContext(ConfigsContext);
   const [playing, setPlaying] = useState(false);
@@ -40,22 +44,21 @@ const Timer = () => {
             setPlaying(true);
             audio.current.pause();
             audio.current.currentTime = 0;
+            console.log(audio.current.volume)
           }, 3000);
           return () => clearTimeout(timeout.current)
         }
-      }, 50)
+      }, configs.velocidade * 10)
     }
 
     return () => {
       clearInterval(cron.current)
     }
-  }, [changeActivity, playing, segundos, volume])
+  }, [changeActivity, configs.velocidade, playing, segundos, volume])
 
   const btnContent = playing ? <p>Pausar <span><IconPause /></span></p> : <p>Iniciar <span><IconPlay /></span></p>;
 
-  const padNumber = (num) => {
-    return num.toString().padStart(2, 0)
-  }
+
   const min = padNumber(Math.floor(segundos / 60));
   const sec = padNumber(segundos % 60);
 

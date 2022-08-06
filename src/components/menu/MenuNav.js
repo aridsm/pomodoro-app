@@ -6,8 +6,8 @@ const MenuNav = ({ intrucoesHandler, configsHandler, contagemHandler, className,
   return (
     <WrapperMenu title='Menu' setShown={setShown} className={className}>
       <nav className={classes.nav}>
-        <button onClick={intrucoesHandler}>Instruçoes</button>
-        <button onClick={configsHandler}>Configuraçoes</button>
+        <button onClick={intrucoesHandler}>Instruções</button>
+        <button onClick={configsHandler}>Configurações</button>
         <button onClick={contagemHandler}>Contagem</button>
       </nav>
     </WrapperMenu>

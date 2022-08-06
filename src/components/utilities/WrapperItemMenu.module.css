@@ -1,0 +1,20 @@
+.itemForm {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #ffffff23;
+}
+
+.itemForm fieldset {
+  border: 0
+}
+
+.itemForm legend {
+  opacity: .6;
+}
+
+.itemForm>fieldset>legend {
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: .8rem;
+  opacity: 1;
+}

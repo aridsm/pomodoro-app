@@ -2,7 +2,6 @@
   list-style: none;
 }
 
-
 .btnDefault,
 .btnSalvar {
   border-radius: 2rem;
@@ -23,31 +22,4 @@
 .btnSalvar {
   margin-top: 2rem;
   margin-bottom: 1rem;
-}
-
-.volumeField label {
-  font-size: 1rem;
-  font-weight: 300;
-  margin-bottom: 1rem;
-  display: block;
-}
-
-.volumeField input {
-  width: 100%;
-  -webkit-appearance: none !important;
-  background: #ffffff23;
-  border-radius: 10px;
-  height: 8px;
-}
-
-.volumeField input::-webkit-slider-thumb {
-  -webkit-appearance: none !important;
-  background: white;
-  border-radius: 50%;
-  height: 1.2rem;
-  width: 1.2rem;
-}
-
-.volumeValue {
-  font-size: 1.8rem;
 }

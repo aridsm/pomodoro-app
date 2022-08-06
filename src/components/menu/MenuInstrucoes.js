@@ -4,7 +4,7 @@ import WrapperMenu from '../utilities/WrapperMenu'
 
 const MenuInstrucoes = ({ className, setShown }) => {
   return (
-    <WrapperMenu title='Instruçoes' setShown={setShown} className={className}>
+    <WrapperMenu title='Instruções' setShown={setShown} className={className}>
       <ol className={classes.lista}>
         <li>Ao clicar no botão de <strong>play</strong>, o cronômetro iniciará a contagem.</li>
         <li>A cada <strong>25 minutos</strong> um alarme será acionado, avisando que está na hora de uma <strong> pequena pausa</strong>.</li>

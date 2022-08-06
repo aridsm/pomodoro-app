@@ -1,9 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import classes from './MenuConfigs.module.css'
 import WrapperMenu from '../utilities/WrapperMenu'
 import { ConfigsContext } from '../../context/ConfigsContext'
 import MenuConfigsInput from './MenuConfigsInput'
 import MenuRadioInput from './MenuRadioInput';
+import WrapperItemMenu from '../utilities/WrapperItemMenu'
+import MenuConfigsRange from './MenuConfigsRange'
 
 const toques = [
   {
@@ -13,7 +15,7 @@ const toques = [
   },
   {
     id: 't2',
-    label: 'Relogio digital',
+    label: 'Relógio digital',
     toque: 'toque-2.wav'
   },
   {
@@ -28,7 +30,8 @@ const MenuConfigs = ({ className, setShown }) => {
   const { configs, updateConfigs, setInitialValue } = useContext(ConfigsContext);
   const [volume, setVolume] = useState(configs.volume);
   const [segundosConfigs, setSegundosConfigs] = useState(configs.segundos);
-  const [toqueSelecionado, setToqueSelecionado] = useState(configs.audio)
+  const [toqueSelecionado, setToqueSelecionado] = useState(configs.audio);
+  const [velocidade, setVelocidade] = useState(configs.velocidade);
 
   const changeAtividadeValue = (totalSegundos) => {
     setSegundosConfigs({ ...segundosConfigs, atividade: totalSegundos })
@@ -43,42 +46,41 @@ const MenuConfigs = ({ className, setShown }) => {
   }
 
   const salvarNovasConfigs = () => {
-    updateConfigs(segundosConfigs, volume, toqueSelecionado)
+    const newConfigs = {
+      segundos: segundosConfigs,
+      volume: volume,
+      audio: toqueSelecionado,
+      velocidade: velocidade
+    }
+    updateConfigs(newConfigs);
+    console.log(newConfigs, configs)
   }
 
   const voltarConfigsIniciais = () => {
-    setInitialValue()
+    setInitialValue();
   }
 
   return (
-    <WrapperMenu title='Configuraçoes' setShown={setShown} className={className}>
+    <WrapperMenu title='Configurações' setShown={setShown} className={className}>
       <form onSubmit={(e) => e.preventDefault()}>
         <ul className={classes.listaInputs}>
-          <>
-            <MenuConfigsInput value={segundosConfigs.atividade} updateValue={changeAtividadeValue} id='atividade' legend='Intervalo de atividade' />
-            <MenuConfigsInput value={segundosConfigs.pausaCurta} updateValue={changePausaCurtaValue} id='pausas-curtas' legend='Intervalo de pausas curtas' />
-            <MenuConfigsInput value={segundosConfigs.pausaLonga} updateValue={changePausaLongaValue} id='pausas-longas' legend='Intervalo de pausas longas' />
-          </>
+          <MenuConfigsInput value={segundosConfigs.atividade} updateValue={changeAtividadeValue} id='atividade' label='Intervalo de atividade' />
+          <MenuConfigsInput value={segundosConfigs.pausaCurta} updateValue={changePausaCurtaValue} id='pausas-curtas' label='Intervalo de pausas curtas' />
+          <MenuConfigsInput value={segundosConfigs.pausaLonga} updateValue={changePausaLongaValue} id='pausas-longas' label='Intervalo de pausas longas' />
 
-          <li className={classes.volumeField}>
-            <label>Volume do alarme</label>
-            <input type="range" value={volume} id='volume' onChange={({ target }) => setVolume(target.value)} />
-            <p className={classes.volumeValue}>{volume}%</p>
-          </li>
+          <MenuConfigsRange legend='Volume do alarme' value={volume} setValue={setVolume} id='volume' valueUnit={`${volume}%`} />
+          <MenuConfigsRange legend='Velocidade do alarme' value={velocidade} setValue={setVelocidade} id='velocidade' min='1' valueUnit={`1 s / ${velocidade / 100} s`} />
 
-          <li>
-            <fieldset className={classes.fieldToques}>
-              <legend>Toque do alarme</legend>
-              {toques.map(({ id, toque, label }) =>
-                <MenuRadioInput id={id} value={toque} label={label} toqueSelecionado={toqueSelecionado} setToqueSelecionado={setToqueSelecionado} key={id} volume={volume} />
-              )}
-            </fieldset>
-          </li>
+          <WrapperItemMenu legend='Volume do alarme'>
+            {toques.map(({ id, toque, label }) =>
+              <MenuRadioInput id={id} value={toque} label={label} toqueSelecionado={toqueSelecionado} setToqueSelecionado={setToqueSelecionado} key={id} volume={volume} />
+            )}
+          </WrapperItemMenu>
         </ul>
-        <button className={classes.btnSalvar} onClick={salvarNovasConfigs}>Salvar alteraçoes</button>
-        <button className={classes.btnDefault} onClick={voltarConfigsIniciais}>Configuraçoes predefinidas</button>
+        <button className={classes.btnSalvar} onClick={salvarNovasConfigs}>Salvar alterações</button>
+        <button className={classes.btnDefault} onClick={voltarConfigsIniciais}>Configurações predefinidas</button>
       </form>
-    </WrapperMenu>
+    </WrapperMenu >
   )
 }
 
