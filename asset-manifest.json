@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/static/css/main.2c415813.css",
+    "main.js": "/static/js/main.7db35c17.js",
+    "static/media/toque-2.wav": "/static/media/toque-2.7ba9fbe41af175d976bf.wav",
+    "static/media/toque-3.wav": "/static/media/toque-3.f5aeae9447fa7ac2219d.wav",
+    "static/media/toque-1.wav": "/static/media/toque-1.6b43ba3c258a24b23783.wav",
+    "static/media/bg.svg": "/static/media/bg.3aab59e6c1e43e69d565.svg",
+    "static/media/github.svg": "/static/media/github.22e65707326e3e1e37afd21c5334995a.svg",
+    "index.html": "/index.html",
+    "static/media/circ.svg": "/static/media/circ.07895f1b72d4d9417de58ac3296b9495.svg",
+    "static/media/arrow-back.svg": "/static/media/arrow-back.39517d09d898ccfab68d21e5cbe7ac3f.svg",
+    "static/media/shape1.svg": "/static/media/shape1.1466a13c82eb22cb523749c0450750c1.svg",
+    "static/media/pause-fill.svg": "/static/media/pause-fill.0c7c7de68f45519e1514b50dee4a8311.svg",
+    "static/media/menu.svg": "/static/media/menu.c795f4c16c886a041cbb3a69bf239fc9.svg",
+    "static/media/play-fill.svg": "/static/media/play-fill.8a149f64342aa42c87f00827ccc8ac0c.svg",
+    "main.2c415813.css.map": "/static/css/main.2c415813.css.map",
+    "main.7db35c17.js.map": "/static/js/main.7db35c17.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2c415813.css",
+    "static/js/main.7db35c17.js"
+  ]
+}
