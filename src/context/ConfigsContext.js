@@ -60,7 +60,7 @@ const ConfigsContextProvider = ({ children }) => {
   }
 
   return (
-    <ConfigsContext.Provider value={{ configs, changeActivity, updateConfigs, setInitialValue, }}>
+    <ConfigsContext.Provider value={{ configs, changeActivity, updateConfigs, setInitialValue, initialState }}>
       {children}
     </ConfigsContext.Provider>
   )

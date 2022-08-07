@@ -27,7 +27,7 @@ const toques = [
 
 const MenuConfigs = ({ className, setShown }) => {
 
-  const { configs, updateConfigs, setInitialValue } = useContext(ConfigsContext);
+  const { configs, updateConfigs, setInitialValue, initialState } = useContext(ConfigsContext);
   const [volume, setVolume] = useState(configs.volume);
   const [segundosConfigs, setSegundosConfigs] = useState(configs.segundos);
   const [inputValid, setInputValid] = useState({
@@ -47,7 +47,7 @@ const MenuConfigs = ({ className, setShown }) => {
   }
 
   const changePausaLongaValue = (totalSegundos) => {
-    setSegundosConfigs({ ...segundosConfigs, pausaCurta: totalSegundos })
+    setSegundosConfigs({ ...segundosConfigs, pausaLonga: totalSegundos })
   }
 
   const setValidInputAtividade = (valid) => {
@@ -67,6 +67,7 @@ const MenuConfigs = ({ className, setShown }) => {
     const AreAllInputsValid = valuesInputsValidation.every(validationValue => validationValue);
 
     if (!AreAllInputsValid) return;
+
     const newConfigs = {
       segundos: segundosConfigs,
       volume: volume,
@@ -77,6 +78,10 @@ const MenuConfigs = ({ className, setShown }) => {
   }
 
   const voltarConfigsIniciais = () => {
+    setVolume(initialState.volume);
+    setSegundosConfigs(initialState.segundos);
+    setToqueSelecionado(initialState.audio);
+    setVelocidade(initialState.velocidade)
     setInitialValue();
   }
 
@@ -89,7 +94,7 @@ const MenuConfigs = ({ className, setShown }) => {
           <MenuConfigsInput value={segundosConfigs.pausaLonga} updateValue={changePausaLongaValue} id='pausas-longas' label='Intervalo de pausas longas' validateInputs={setValidInputPausaLonga} />
 
           <MenuConfigsRange legend='Volume do alarme' value={volume} setValue={setVolume} id='volume' valueUnit={`${volume}%`} />
-          <MenuConfigsRange legend='Velocidade do alarme' value={velocidade} setValue={setVelocidade} id='velocidade' min='1' valueUnit={`1 s / ${velocidade / 100} s`} />
+          <MenuConfigsRange legend='Velocidade do alarme' value={velocidade} setValue={setVelocidade} id='velocidade' min='1' valueUnit={`-1 s / ${velocidade / 100} s`} />
 
           <WrapperItemMenu legend='Volume do alarme'>
             {toques.map(({ id, toque, label }) =>

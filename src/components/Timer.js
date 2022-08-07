@@ -44,7 +44,6 @@ const Timer = () => {
             setPlaying(true);
             audio.current.pause();
             audio.current.currentTime = 0;
-            console.log(audio.current.volume)
           }, 3000);
           return () => clearTimeout(timeout.current)
         }
