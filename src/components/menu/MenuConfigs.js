@@ -30,6 +30,11 @@ const MenuConfigs = ({ className, setShown }) => {
   const { configs, updateConfigs, setInitialValue } = useContext(ConfigsContext);
   const [volume, setVolume] = useState(configs.volume);
   const [segundosConfigs, setSegundosConfigs] = useState(configs.segundos);
+  const [inputValid, setInputValid] = useState({
+    atividade: true,
+    pausaCurta: true,
+    pausaLonga: true
+  })
   const [toqueSelecionado, setToqueSelecionado] = useState(configs.audio);
   const [velocidade, setVelocidade] = useState(configs.velocidade);
 
@@ -45,7 +50,23 @@ const MenuConfigs = ({ className, setShown }) => {
     setSegundosConfigs({ ...segundosConfigs, pausaCurta: totalSegundos })
   }
 
+  const setValidInputAtividade = (valid) => {
+    setInputValid({ ...inputValid, atividade: valid })
+  }
+
+  const setValidInputPausaCurta = (valid) => {
+    setInputValid({ ...inputValid, pausaCurta: valid })
+  }
+
+  const setValidInputPausaLonga = (valid) => {
+    setInputValid({ ...inputValid, pausaLonga: valid })
+  }
+
   const salvarNovasConfigs = () => {
+    const valuesInputsValidation = Object.values(inputValid);
+    const AreAllInputsValid = valuesInputsValidation.every(validationValue => validationValue);
+
+    if (!AreAllInputsValid) return;
     const newConfigs = {
       segundos: segundosConfigs,
       volume: volume,
@@ -53,7 +74,6 @@ const MenuConfigs = ({ className, setShown }) => {
       velocidade: velocidade
     }
     updateConfigs(newConfigs);
-    console.log(newConfigs, configs)
   }
 
   const voltarConfigsIniciais = () => {
@@ -64,9 +84,9 @@ const MenuConfigs = ({ className, setShown }) => {
     <WrapperMenu title='Configurações' setShown={setShown} className={className}>
       <form onSubmit={(e) => e.preventDefault()}>
         <ul className={classes.listaInputs}>
-          <MenuConfigsInput value={segundosConfigs.atividade} updateValue={changeAtividadeValue} id='atividade' label='Intervalo de atividade' />
-          <MenuConfigsInput value={segundosConfigs.pausaCurta} updateValue={changePausaCurtaValue} id='pausas-curtas' label='Intervalo de pausas curtas' />
-          <MenuConfigsInput value={segundosConfigs.pausaLonga} updateValue={changePausaLongaValue} id='pausas-longas' label='Intervalo de pausas longas' />
+          <MenuConfigsInput value={segundosConfigs.atividade} updateValue={changeAtividadeValue} id='atividade' label='Intervalo de atividade' validateInputs={setValidInputAtividade} />
+          <MenuConfigsInput value={segundosConfigs.pausaCurta} updateValue={changePausaCurtaValue} id='pausas-curtas' label='Intervalo de pausas curtas' validateInputs={setValidInputPausaCurta} />
+          <MenuConfigsInput value={segundosConfigs.pausaLonga} updateValue={changePausaLongaValue} id='pausas-longas' label='Intervalo de pausas longas' validateInputs={setValidInputPausaLonga} />
 
           <MenuConfigsRange legend='Volume do alarme' value={volume} setValue={setVolume} id='volume' valueUnit={`${volume}%`} />
           <MenuConfigsRange legend='Velocidade do alarme' value={velocidade} setValue={setVelocidade} id='velocidade' min='1' valueUnit={`1 s / ${velocidade / 100} s`} />

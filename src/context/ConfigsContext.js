@@ -41,7 +41,7 @@ const configReducer = (state, action) => {
     return { ...state, ...action.newConfigs }
   }
   if (action.type === 'SET_INITIAL_VALUE') {
-    return { ...state, segundos: initialState.segundos, volume: initialState.volume }
+    return { ...state, segundos: initialState.segundos, volume: initialState.volume, velocidade: initialState.velocidade }
   }
 }
 

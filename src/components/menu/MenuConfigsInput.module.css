@@ -1,10 +1,15 @@
-.itemForm label {
-  font-size: .9rem;
+.container {
+  justify-content: flex-end;
+  display: grid;
+  grid-template-columns: auto auto;
 }
 
-.container {
-  display: flex;
-  justify-content: flex-end;
+.aviso {
+  grid-column: 1 / -1;
+  color: rgb(255, 103, 77);
+  font-size: .9rem;
+  font-weight: 400;
+  margin-top: .5rem;
 }
 
 .inputField {
@@ -16,7 +21,7 @@
 .inputField input {
   -moz-appearance: textfield;
   background: none;
-  padding: .2rem;
+  padding: .1rem;
   width: 4rem;
   color: white;
   font-size: 1.8rem;
@@ -25,13 +30,13 @@
   text-align: center;
   outline: none;
   border: 1px solid transparent;
-  border-radius: 2rem;
+  border-radius: 1rem;
   transition: .1s;
   margin-right: .2rem;
 }
 
 .inputField+.inputField {
-  margin-left: 2rem;
+  margin-left: 1rem;
 }
 
 .inputField input:hover {
@@ -46,4 +51,24 @@
 .inputField input::-webkit-outer-spin-button,
 .inputField input::-webkit-inner-spin-button {
   display: none;
+}
+
+.inputField label {
+  font-size: 1rem;
+}
+
+.inputField input.invalid {
+  border: 1px solid rgb(255, 103, 77);
+  background: rgb(255, 103, 77, 0.1);
+}
+
+@media all and (max-width: 580px) {
+  .inputField label {
+    font-size: .8rem;
+  }
+
+  .inputField input {
+    font-size: 1.5rem;
+    width: 3rem;
+  }
 }
