@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/pomodoro-app/static/css/main.85eedfbb.css",
+    "main.css": "/pomodoro-app/static/css/main.dd52f2d9.css",
     "main.js": "/pomodoro-app/static/js/main.81dbe8d3.js",
     "static/media/toque-2.wav": "/pomodoro-app/static/media/toque-2.7ba9fbe41af175d976bf.wav",
     "static/media/toque-3.wav": "/pomodoro-app/static/media/toque-3.f5aeae9447fa7ac2219d.wav",
@@ -14,11 +14,11 @@
     "static/media/pause-fill.svg": "/pomodoro-app/static/media/pause-fill.0c7c7de68f45519e1514b50dee4a8311.svg",
     "static/media/menu.svg": "/pomodoro-app/static/media/menu.c795f4c16c886a041cbb3a69bf239fc9.svg",
     "static/media/play-fill.svg": "/pomodoro-app/static/media/play-fill.8a149f64342aa42c87f00827ccc8ac0c.svg",
-    "main.85eedfbb.css.map": "/pomodoro-app/static/css/main.85eedfbb.css.map",
+    "main.dd52f2d9.css.map": "/pomodoro-app/static/css/main.dd52f2d9.css.map",
     "main.81dbe8d3.js.map": "/pomodoro-app/static/js/main.81dbe8d3.js.map"
   },
   "entrypoints": [
-    "static/css/main.85eedfbb.css",
+    "static/css/main.dd52f2d9.css",
     "static/js/main.81dbe8d3.js"
   ]
 }
