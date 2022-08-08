@@ -2,6 +2,8 @@
 
 Aplicativo Web com a técnica de estudo Pomodoro feito com React Js e CSS.
 
+![página web](https://github.com/aridsm/pomodoro-app/blob/master/public/pomodoro-app.png)
+
 ## Descrição
 
 O pomodoro é uma técnica de estudo que se baseia em dividir o tempo das suas tarefas entre pausas e atividade para um melhor aproveitamento do tempo. No projeto em questão, o tempo de atividade padrão é 25 minutos e as pausas curtas e longas são de 5 e 20 minutos, respectivamente.
